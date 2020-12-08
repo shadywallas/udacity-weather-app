@@ -13,7 +13,7 @@ If you are interested in testing your code as you go, you can use `tests.js` as 
 
 ### open weather api 
 external call to open weather api.
-we use city name instead of zip code because its easier . 
+we use zip code. 
 
 ### fetch
 using fetch to post and get data from server.

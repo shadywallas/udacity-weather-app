@@ -3,19 +3,20 @@
 const key = '606f567efb0fcf2caf5a9567b4829273';
 const baseUrl = `//api.openweathermap.org/data/2.5/weather`;
 const generateButton = document.getElementById('generate');
-const cityNameTextField = document.getElementById('city');
+const zipTextField = document.getElementById('zip');
 const userResponseTextFiled = document.getElementById('feelings');
 const DateElement = document.getElementById('date');
 const tempElement = document.getElementById('temp');
 const contentElement = document.getElementById('content');
 // Create a new date instance dynamically with JS
 let d = new Date();
-let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
 
-//retrieve weather data by city name from OpenWeatherMap.com
-async function getApiWeatherData(cityName, apiKey) {
-    const url = `${baseUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
-    const res = await fetch(url)
+let newDate = d.getMonth() + 1 + '.' + d.getDate() + '.' + d.getFullYear();
+
+//retrieve weather data by zip name from OpenWeatherMap.com
+async function getApiWeatherData(zip, apiKey) {
+    const url = `${baseUrl}?zip=${zip}&appid=${apiKey}&units=metric`;
+    const res = await fetch(url);
 
     let temp = 0;
     try {
@@ -58,7 +59,7 @@ const getWeatherData = async () => {
 
 //creat event listeners
 generateButton.addEventListener('click', () => {
-    getApiWeatherData(cityNameTextField.value, key)
+    getApiWeatherData(zipTextField.value, key)
         .then((temp) => {
             saveWeatherData(temp, newDate, userResponseTextFiled.value)
                 .then((res) => {
@@ -79,7 +80,9 @@ generateButton.addEventListener('click', () => {
 
 
 getWeatherData().then((res) => {
-    DateElement.innerText = res[newDate].date;
-    tempElement.innerText = res[newDate].temperature + ' °C';
-    contentElement.innerText = res[newDate].userResponse;
+    if (res[newDate]){
+        DateElement.innerText = res[newDate].date;
+        tempElement.innerText = res[newDate].temperature + ' °C';
+        contentElement.innerText = res[newDate].userResponse;
+    }
 })
