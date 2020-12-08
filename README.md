@@ -25,6 +25,7 @@ using fetch to post and get data from server.
 ## server 
 ### express server 
 install express , body parser and cors.
-####endpoint to retrieve all stored weather data.
 
-####endpoint to store weather date and user response.
+#### endpoint to retrieve all stored weather data.
+
+#### endpoint to store weather date and user response.
