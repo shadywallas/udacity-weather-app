@@ -28,4 +28,7 @@ install express , body parser and cors.
 
 #### endpoint to retrieve all stored weather data.
 
+
+
+
 #### endpoint to store weather date and user response.
