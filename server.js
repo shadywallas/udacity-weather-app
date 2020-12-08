@@ -1,6 +1,6 @@
 // Setup empty JS object to act as endpoint for all routes
 let projectData = {};
-const port = 8000;
+const port = 8080;
 
 // Require Express to run server and routes
 //external libraries
